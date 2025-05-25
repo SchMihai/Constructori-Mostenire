@@ -1,0 +1,72 @@
+#include<iostream>
+class masini
+{
+public:
+    char *marca,*transmisia,*combustie,*caroseria;
+    masini(char *marca1,char *transmisia1,char *caroseria1,char *combustie1,int cc1,int p1)
+    {
+        marca=marca1;
+        transmisia=transmisia1;
+        caroseria=caroseria1;
+        combustie=combustie1;
+        cc=cc1;
+        p=p1;
+    }
+    void vizualizare_date()
+    {
+        std::cout<<"Autoturismul "<<marca<<" este de tip "<<caroseria<<" cu transmisia "<<transmisia<<" utilizeaza combustibilul "<<combustie<<std::endl;
+    }
+    void date_prv(int cc1,int p1)
+    {
+        cc=cc1;
+        p=p1;
+    }
+    int capacitate()
+    {
+        return (cc);
+    }
+    int putere()
+    {
+        return(p);
+    }
+private:
+    int cc,p;
+
+};
+class dealer:public masini
+{
+public:
+    dealer(char *marca1,char *transmisia1,char *caroseria1,char *combustie1,int cc1,int p1,int nr_m,char *culoare):masini(marca1,transmisia1,caroseria1,combustie1,cc1,p1)
+    {
+        dealer::nr_m=nr_m;
+        dealer::culoare=culoare;}
+        float vizualizare()
+        {
+            vizualizare_date();
+            std::cout<<"Din marca de masini"<<marca<<"mai avem in stoc"<<nr_m<<"de culoare"<<culoare<<std::endl;
+
+        }
+private:
+    int nr_m;
+    char *culoare;
+};
+int main()
+{
+    masini M1("Dacia","Automata","SUV","GPL",3000,175);
+    M1.vizualizare_date();
+    std::cout<<M1.marca<<" are cc= "<< M1.capacitate()<<" cm^3 "<<" si are "<<M1.putere()<<" cai suparati"<<std::endl;
+    masini M2("AUDI S5","Manuala","Sportback","Benzina",3000,275);
+    M2.vizualizare_date();
+    std::cout<<M2.marca<<" are cc= "<< M2.capacitate()<<" cm^3 "<<" si are "<<M2.putere()<<" cp"<<std::endl;
+    masini M3("KIA Sportage","Automata","SUV","diesel",2000,150);
+    M3.vizualizare_date();
+    std::cout<<M3.marca<<" are cc= "<< M3.capacitate()<<" cm^3 "<<" si are "<<M3.putere()<<" cp"<<std::endl;
+    dealer M4("Dacia","Automata","SUV","GPL",3000,175,20,"NEGRU");
+    M4.vizualizare();
+    std::cout<<M4.marca<<" are cc= "<< M4.capacitate()<<" cm^3 "<<" si are "<<M4.putere()<<" cp"<<std::endl;
+    dealer M5("AUDI S5","Manuala","Sportback","Benzina",3000,275,240,"Rosi");
+     M5.vizualizare();
+      std::cout<<M5.marca<<" are cc= "<< M5.capacitate()<<" cm^3 "<<" si are "<<M5.putere()<<" cp"<<std::endl;
+      dealer M6("KIA Sportage","Automata","SUV","diesel",2000,150,39,"alb");
+    return 0;
+}
